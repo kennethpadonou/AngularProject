@@ -1,0 +1,70 @@
+<app-toolbar></app-toolbar>
+
+<!--
+<mat-toolbar color="primary" class="example-toolbar" style="display: flex; justify-content: space-between;">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon> </button>
+	<h1 class="example-app-name">K's Project</h1>
+
+  <mat-icon>perm_identity</mat-icon>
+</mat-toolbar>
+-->
+
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list style="display: flex; flex-direction: column; ">
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="toolbarService.isExpanded || isShowing">Devoir</span>
+				<mat-icon mat-list-icon>home</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="toolbarService.isExpanded || isShowing">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || toolbarService.isExpanded">
+				<a mat-list-item routerLink="/home">Liste des devoirs</a>
+				<a mat-list-item routerLink="/add">Ajout d'un devoir</a>
+        <a mat-list-item href="...">Modification d'un devoir</a>
+        <a mat-list-item href="...">Suppression d'un devoir</a>
+        <!--<a mat-list-item href="...">Génération de données de test</a>-->
+				<mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+					<span class="full-width" *ngIf="toolbarService.isExpanded || isShowing">Génération</span>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="toolbarService.isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || toolbarService.isExpanded">
+					<a mat-list-item href="...">Génération de données de test</a>
+          <!--<mat-list-item>SubSubmenu Item 1</mat-list-item>-->
+				</div>
+			</div>
+
+      <div *ngIf="isAuth() && (showSubmenu || toolbarService.isExpanded)">
+      <a mat-list-item class="logout-link" (click)="onLogout()">Déconnexion</a>
+      </div>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+<!-- <nav>
+      <a routerLink="/assignment/{{ assignment.id }}"> -->
+
+
+  	<!--<div class="example-sidenav-content">-->
+      <div class="container">
+      <h1><a routerLink="/home">{{titre}}</a></h1>
+      <!-- <mat-slide-toggle color="primary" (click)="onLogin()">Login</mat-slide-toggle> -->
+
+      <!-- <div *ngIf="isAuth(); else logging">
+      <button mat-stroked-button color="accent" class="btn-block" (click)="onLogout()">Déconnexion</button>
+      </div>
+      <ng-template #logging>
+            <button mat-stroked-button color="accent" class="btn-block" (click)="onLogin2()">Se connecter</button>
+          </ng-template> -->
+
+
+
+
+    </div>
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+
+
+
+

@@ -1,0 +1,37 @@
+<!--<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h4>Logo</h4>
+        <button mat-button style="background-color: blueviolet;"><mat-icon>home</mat-icon></button>
+    </mat-toolbar-row>
+</mat-toolbar>
+-->
+
+<!--
+<mat-toolbar color="primary" class="example-toolbar" style="display: flex; justify-content: space-between;">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon> </button>
+	<h1 class="example-app-name">K's Project</h1>
+
+  <mat-icon>perm_identity</mat-icon>
+</mat-toolbar>
+-->
+
+<mat-toolbar color="primary" class="example-toolbar" style="display: flex; justify-content: space-between;">
+	<button mat-icon-button (click)="toolbarService.isExpanded = !toolbarService.isExpanded"><mat-icon>menu</mat-icon> </button>
+	<h1 class="example-app-name">K's Project</h1>
+
+  <!-- <mat-icon>perm_identity</mat-icon> -->
+  <mat-menu #menu="matMenu">
+    <div *ngIf="isAuth(); else logging">
+    <button mat-menu-item (click)="onLogout()">Déconnexion</button>
+      </div>
+      <ng-template #logging>
+            <button mat-menu-item (click)="onLogin2()">Connexion</button>
+          </ng-template>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>perm_identity</mat-icon>
+  </button>
+
+</mat-toolbar>
+

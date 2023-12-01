@@ -1,0 +1,19 @@
+.danger-button {
+  color: white;
+  background-color: red;
+}
+
+#assignment-detail {
+  margin-top: 20px;
+}
+#assignment-detail .assignment-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

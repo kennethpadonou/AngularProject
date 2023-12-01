@@ -1,0 +1,22 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <p>Compte admin : username = admin, pass = admin.</p>
+    <p>utilisateur(non admin)  : username = root, pass = root.</p>
+    <br/>
+    <form #formupdate="ngForm" class="form" (submit)="onLoginUser($event); formupdate.reset();">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" [(ngModel)]="nom" name="nom">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [(ngModel)]="pass" name="pass">
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block" [disabled]="((!nom)||(!pass))">Log in</button>
+      <!--  -->
+    </form>
+  </mat-card>
+</div>
