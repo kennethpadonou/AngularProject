@@ -91,7 +91,7 @@ export class AssignmentsService {
       }
       return of('Assignment supprimé');
       */
-      return this.http.delete(this.url + "/" + assignment._id);
+      return this.http.delete(this.url + "/" + assignment.id);
     }
     
     getAssignment(id: number): Observable<Assignment | null> {
