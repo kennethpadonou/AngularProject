@@ -84,19 +84,21 @@ export class AssignmentsService {
     
     
     
-    deleteAssignment(assignment: Assignment): Observable<any> {
-      /* const index = this.assignments.indexOf(assignment);
-      
-      if (index > -1) {
-        this.assignments.splice(index, 1);
-      }
-      if (assignment.nom !== undefined) {
-        this.loggingService.log(assignment.nom, 'supprimé');
-      }
-      return of('Assignment supprimé');
-      */
+    /*deleteAssignment(assignment: Assignment): Observable<any> {
+      //return this.http.delete(this.url + "/" + assignment.id);
+      //return this.http.delete(this.url, assignment);
       return this.http.delete(this.url + "/" + assignment.id);
     }
+    */
+    deleteAssignment(assignment: Assignment): Observable<any> {
+      const options = {
+          headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+          }),
+          body: { id: assignment.id },
+      };
+      return this.http.delete(this.url, options);
+  }
     
     getAssignment(id: number): Observable<Assignment | null> {
       /*const assignment = this.assignments.find((a) => {
