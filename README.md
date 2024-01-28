@@ -32,7 +32,7 @@ npm install
 node server.js
 
 
-Le backend devrait maintenant être accessible à l'adresse `http://localhost:3000`.
+Le backend devrait maintenant être accessible à l'adresse `http://localhost:8010`.
 
 ### Frontend
 
@@ -55,7 +55,7 @@ ng serve
 
 
 
-L'application frontend devrait maintenant être accessible à l'adresse `http://localhost:4200`. (au port 8010)
+L'application frontend devrait maintenant être accessible à l'adresse `http://localhost:4200`.
 
 Assurez-vous que le backend est en cours d'exécution localement pour que le frontend puisse communiquer avec lui.
 
@@ -64,10 +64,10 @@ Assurez-vous que le backend est en cours d'exécution localement pour que le fro
 Vous pouvez également accéder au projet en ligne à l'adresse suivante :
 [Projet Angular en ligne](https://front-angular-m1-project-acc70a3593d1.herokuapp.com/home)
 
-## Contributions
+## Contributeur
 
-- [PADONOU Kenneth] : [Description de vos contributions]
-- [LEFUMEU Bastien] : [Description de ses contributions]
+- [PADONOU Kenneth] 
+- [LEFUMEU Bastien] 
 
 
 
