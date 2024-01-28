@@ -29,6 +29,10 @@ export class AssignmentsService {
     getMatiere(): Observable<any> {
       return this.http.get<any>(this.url2);
     }
+    url3 = 'https://angular-m1-project-32e5d49aea0c.herokuapp.com/api/utilisateurs'
+    getUsers(): Observable<any> {
+      return this.http.get<any>(this.url3);
+    }
 
     
     getAssignmentsPaginated(page: number, limit: number): Observable<any> {
