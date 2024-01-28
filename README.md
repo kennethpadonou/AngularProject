@@ -64,7 +64,7 @@ Assurez-vous que le backend est en cours d'exécution localement pour que le fro
 Vous pouvez également accéder au projet en ligne à l'adresse suivante :
 [Projet Angular en ligne](https://front-angular-m1-project-acc70a3593d1.herokuapp.com/home)
 
-## Contributeur
+## Contributeurs
 
 - [PADONOU Kenneth] 
 - [LEFUMEU Bastien] 
