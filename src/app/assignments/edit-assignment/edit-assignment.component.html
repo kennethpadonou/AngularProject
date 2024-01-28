@@ -1,17 +1,120 @@
+<!--
+  <div class="container" *ngIf="assignment">
+  <h1>Edition de l'assignment {{assignment.nom}}</h1>
+  <form ngForm class="form" #formupdate (submit)="onSaveAssignment($event); formupdate.reset(); ">
+    <mat-form-field>
+      <input matInput placeholder="Edition du nom" [(ngModel)]="nom" name="nom">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu" name="dateDeRendu">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Elève : </mat-label>
+      <mat-select>
+        <mat-option *ngFor="let eleve of eleveData" [value]="eleve.nomComplet" [(ngModel)]="nomEleve">
+          {{eleve.nomComplet}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Matière : </mat-label>
+      <mat-select (selectionChange)="onMatiereChange($event)">
+        <mat-option *ngFor="let matiere of matieres" [value]="matiere" >
+          {{matiere.nom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div class="image-container">
+      <div class="image-item">
+        <h3>Photo du professeur</h3>
+        <img [src]="selectedMatiere?.profPhoto || 'default-image.jpg'" alt="Photo du professeur">
+      </div>
+      <div class="image-item">
+        <h3>Photo de la matière</h3>
+        <img [src]="selectedMatiere?.image || 'default-image.jpg'" alt="Photo de la matière">
+      </div>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Mettre une remarque" [(ngModel)]="remarques"></textarea>
+    </mat-form-field>
+    <input type="hidden" [value]="selectedMatiere?._id" [(ngModel)]="idMatiere">
+    
+    <button mat-raised-button color="primary" [disabled]="((!nom)||(!dateDeRendu))">
+      Sauver
+    </button>
+  </form>
+</div>
+-->
 <div class="container" *ngIf="assignment">
- <h1>Edition de l'assignment {{assignment.nom}}</h1>
- <form ngForm class="form" #formupdate (submit)="onSaveAssignment($event); formupdate.reset(); ">
-   <mat-form-field>
-     <input matInput placeholder="Edition du nom" [(ngModel)]="nom" name="nom">
-   </mat-form-field>
-   <mat-form-field>
-     <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu" name="dateDeRendu">
-     <mat-datepicker-toggle matSuffix [for]="picker">
-     </mat-datepicker-toggle>
-     <mat-datepicker #picker></mat-datepicker>
-   </mat-form-field>
-         <button mat-raised-button color="primary" [disabled]="((!nom)||(!dateDeRendu))">
-     Sauver
-   </button>
- </form>
+  <h1>Edition de l'assignment {{assignment.nom}}</h1>
+  <form ngForm class="form" #formupdate (submit)="onSaveAssignment($event); formupdate.reset(); ">
+    <mat-form-field>
+      <input matInput placeholder="Edition du nom" [(ngModel)]="nom" name="nom">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu" name="dateDeRendu">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Elève : </mat-label>
+      <mat-select [(ngModel)]="nomEleve" name="nomEleve">
+        <mat-option *ngFor="let eleve of eleveData" [value]="eleve.nomComplet">
+          {{eleve.nomComplet}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Matière : </mat-label>
+      <mat-select [(ngModel)]="selectedMatiere" name="selectedMatiere" (selectionChange)="onMatiereChange($event)">
+        <mat-option *ngFor="let matiere of matieres" [value]="matiere">
+          {{matiere.nom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div class="image-container">
+      <div class="image-item">
+        <h3>Photo du professeur</h3>
+        <img [src]="selectedMatiere?.profPhoto || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO0AAADVCAMAAACMuod9AAAAVFBMVEXu7u5mZmbz8/NZWVlcXFy8vLzU1NSXl5eioqKysrL19fV/f3/x8fFjY2NeXl7Nzc3j4+NqamrKysqMjIx3d3eGhobp6ene3t5TU1Nubm6wsLCPj49E04CSAAACxUlEQVR4nO3b63KiQBRFYWwIJoSbYnQyef/3HPCCIt1OMraTOjtr/VSk+vMolypNkh+U++4F/NfQ6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY3tLqh1Q2tbmh1Q6sbWt3Q6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDq9sDtKWLVfSlxd9j2TzFqo29tge8f89plsao/pWXsdcWeX+Dtn5dxug9M6FNX4oYvaZGtDH2ivbe0N65R7T/ENp7+25tf5kZIOlpS5e//F4nXpScttxt0rrOVo1vezVt2dbVoq9KGw9LTVu87bE9d+F5gZq2zRbHsvXcJaYtm1Fbe16hps1/kjbZjlqfy7bWtdePFsv6eJTaFPPtTWtdk65nD7/vuVW1EzsD9dgqW1+NsEyWWZalb61PZVjr9sff+XSLbdO0/itlu9p+ssfz6uwLWoZEZrVuPLN6vruhrGrPWO90x6bHKqPaS2zP9d7wDJt11eRoZVM7xQan67r+huiSa1J7jQ1Mt8cO90IXXIvaOXbgzqa7x065BrU+rGe6RXe6hjxz7Wn92BnXnbA9d3XimtOGsFfc4oy9mK41rWvqAHbCdd1ks9N0jWnDk51wi+7qPTlybWlvTfaC6z5mmx24prS3JztyZ5MduZa0Lr892QO38Ez2xDWkdfnfJnvg+rF7rh1t8YnJDtVV6JlqlVjRPn1qsrerNhsb2vojOLKvcBc2fkEU/nx+LSPaOFi0964t8v7QokVrU5tmcbLw++Rkl8dqG3tpj/gXRRmr6CvjPyO6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY3tLqh1Q2tbmh1Q6sbWt3Q6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY39wcAlyz4wLPLJwAAAABJRU5ErkJggg=='" 
+        alt="Photo du professeur">
+      </div>
+      <div class="image-item">
+        <h3>Photo de la matière</h3>
+        <img [src]="selectedMatiere?.image || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO0AAADVCAMAAACMuod9AAAAVFBMVEXu7u5mZmbz8/NZWVlcXFy8vLzU1NSXl5eioqKysrL19fV/f3/x8fFjY2NeXl7Nzc3j4+NqamrKysqMjIx3d3eGhobp6ene3t5TU1Nubm6wsLCPj49E04CSAAACxUlEQVR4nO3b63KiQBRFYWwIJoSbYnQyef/3HPCCIt1OMraTOjtr/VSk+vMolypNkh+U++4F/NfQ6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY3tLqh1Q2tbmh1Q6sbWt3Q6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDq9sDtKWLVfSlxd9j2TzFqo29tge8f89plsao/pWXsdcWeX+Dtn5dxug9M6FNX4oYvaZGtDH2ivbe0N65R7T/ENp7+25tf5kZIOlpS5e//F4nXpScttxt0rrOVo1vezVt2dbVoq9KGw9LTVu87bE9d+F5gZq2zRbHsvXcJaYtm1Fbe16hps1/kjbZjlqfy7bWtdePFsv6eJTaFPPtTWtdk65nD7/vuVW1EzsD9dgqW1+NsEyWWZalb61PZVjr9sff+XSLbdO0/itlu9p+ssfz6uwLWoZEZrVuPLN6vruhrGrPWO90x6bHKqPaS2zP9d7wDJt11eRoZVM7xQan67r+huiSa1J7jQ1Mt8cO90IXXIvaOXbgzqa7x065BrU+rGe6RXe6hjxz7Wn92BnXnbA9d3XimtOGsFfc4oy9mK41rWvqAHbCdd1ks9N0jWnDk51wi+7qPTlybWlvTfaC6z5mmx24prS3JztyZ5MduZa0Lr892QO38Ez2xDWkdfnfJnvg+rF7rh1t8YnJDtVV6JlqlVjRPn1qsrerNhsb2vojOLKvcBc2fkEU/nx+LSPaOFi0964t8v7QokVrU5tmcbLw++Rkl8dqG3tpj/gXRRmr6CvjPyO6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY3tLqh1Q2tbmh1Q6sbWt3Q6oZWN7S6odUNrW5odUOrG1rd0OqGVje0uqHVDa1uaHVDqxta3dDqhlY39wcAlyz4wLPLJwAAAABJRU5ErkJggg=='" 
+        alt="Photo de la matière">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="note" class="form-label">Note :</label>
+      <input type="number" id="note" name="note" [(ngModel)]="note" min="0" max="20" required class="form-control">
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Mettre une remarque" [(ngModel)]="remarques" name="remarques"></textarea>
+    </mat-form-field>
+    <!--<input type="hidden" [value]="selectedMatiere?._id" [(ngModel)]="idMatiere" name="idMatiere">-->
+    
+
+    <button mat-raised-button color="primary" [disabled]="((!nom)||(!dateDeRendu))">
+      Sauver
+    </button>
+
+
+    
+
+
+  </form>
 </div>

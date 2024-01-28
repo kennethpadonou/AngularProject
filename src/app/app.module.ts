@@ -37,18 +37,34 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { LoginComponent } from './Log/login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+
+import {AfterViewInit} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatSelectModule } from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
+//import { StepperOverviewExample } from './assignments/edit-assignment/stepper-overview.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   //{ path: '', component: AssignmentsComponent },
-  { path: 'home', component: AssignmentsComponent, canActivate: [AuthGuard] },
+  { 
+    path: 'home', component: AssignmentsComponent, 
+  //canActivate: [AuthGuard] 
+  },
   { path: 'add', component: AddAssignmentComponent, canActivate: [AuthGuard] },
   {
     path: 'assignment/:id',
     component: AssignmentDetailComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
   },
   //{path: '', redirectTo: 'home', pathMatch: 'full'},
   //{path: '**', redirectTo: 'home'},
@@ -57,6 +73,10 @@ const routes: Routes = [
     component: EditAssignmentComponent,
     canActivate: [AuthGuard],
   },
+  /*{ path: 'api/assignments', 
+  component: AssignmentsComponent,
+  canActivate: [AuthGuard] 
+},*/
 ];
 @NgModule({
   declarations: [
@@ -68,6 +88,7 @@ const routes: Routes = [
     AddAssignmentComponent,
     EditAssignmentComponent,
     LoginComponent,
+    //StepperOverviewExample,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +109,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatSlideToggleModule,
     MatMenuModule,HttpClientModule,
+    MatPaginatorModule,MatTableModule,MatSortModule,MatSelectModule, MatTableModule,//MatPaginator,MatSort,MatTableDataSource
+    MatStepperModule,ReactiveFormsModule,
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent],

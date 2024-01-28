@@ -1,0 +1,11 @@
+input.error {
+    border-color: red;
+  }
+  
+  .error-message {
+    font-size: 12px; /* Ajustez cette valeur selon vos besoins */
+    color: red;
+  }
+  mat-form-field {
+    max-height: 40px; /* Ajustez cette valeur selon vos besoins */
+  }

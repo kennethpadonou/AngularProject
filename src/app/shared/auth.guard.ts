@@ -39,13 +39,15 @@ export class AuthGuard implements CanActivate {
         return true;
       } else {
         console.log('Pas authentifié');
-        //this.router.navigate(['/home']);
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;
       }
 
 
   }
+
+  
 }
 
 

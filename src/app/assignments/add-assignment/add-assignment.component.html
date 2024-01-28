@@ -24,8 +24,40 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Elève : </mat-label>
+    <mat-select [(ngModel)]="nomEleve" name="nomEleve">
+      <mat-option *ngFor="let eleve of eleveData" [value]="eleve.nomComplet">
+        {{eleve.nomComplet}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Matière : </mat-label>
+    <mat-select [(ngModel)]="selectedMatiere" name="selectedMatiere" (selectionChange)="onMatiereChange($event)">
+      <mat-option *ngFor="let matiere of matieres" [value]="matiere">
+        {{matiere.nom}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div class="form-group">
-    <mat-checkbox (change)="checkBoxChanged($event)">Devoir rendu</mat-checkbox>
+    <label for="note" class="form-label">Note :</label>
+    <input type="number" id="note" name="note" [(ngModel)]="note" min="0" max="20" required class="form-control">
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Mettre une remarque" [(ngModel)]="remarques" name="remarques"></textarea>
+  </mat-form-field>
+
+
+
+  <div class="form-group">
+    <mat-checkbox  
+    [disabled]="!note" [(ngModel)]="rendu" name="rendu">Devoir rendu</mat-checkbox>
   </div>
   <button  color="primary" (click)="onSubmit($event)">
     <!--[disabled]="!ajoutActive"-->

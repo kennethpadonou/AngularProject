@@ -1,8 +1,91 @@
-import { Component, OnInit, /*EventEmitter, Output,*/ Input } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { Assignment } from '../assignment.model';
+import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { Router } from '@angular/router';
+import { eleves } from '../../shared/eleves';
+
+interface Eleve {
+  id: number;
+  nomComplet: string;
+}
+
+@Component({
+  selector: 'app-add-assignment',
+  templateUrl: './add-assignment.component.html',
+  styleUrls: ['./add-assignment.component.css'],
+})
+export class AddAssignmentComponent implements OnInit {
+  nomDevoir: string | undefined;
+  dateDeRendu: Date | undefined;
+  idMatiere: string | undefined;
+  nomEleve: string | undefined;
+  remarques: string | undefined;
+  note: number | undefined;
+  rendu: boolean = false;
+
+  eleveData: Eleve[] = [];
+  matieres: any[] = [];
+  
+  selectedMatiere: any;
+  onMatiereChange(event: any) { // Remplacez 'any' par le type de l'événement
+    this.selectedMatiere = event.value;
+  }
+
+  constructor(
+    private assignmentService: AssignmentsService,
+    private router: Router
+  ) {this.eleveData = eleves;}
+
+  ngOnInit(): void {
+    this.getMatiere();
+  }
+
+  getMatiere() {
+    this.assignmentService.getMatiere().subscribe((matieres) => {
+      this.matieres = matieres;
+    });
+  }
+
+  
+
+  onSubmit(event: any) {
+    event.preventDefault();
+    const newAssignment = new Assignment();
+    newAssignment.id = Math.floor(Math.random() * 1000000) + 1;
+    newAssignment.nom = this.nomDevoir;
+    newAssignment.dateDeRendu = this.dateDeRendu;
+    newAssignment.rendu = this.rendu//false;
+    newAssignment.idMatiere = this.selectedMatiere._id;
+    newAssignment.auteur = this.nomEleve;
+    newAssignment.remarques = this.remarques;
+    newAssignment.note = this.note;
+
+    this.assignmentService
+      .addAssignment(newAssignment)
+      .subscribe((message) => {
+        console.log(message)
+        this.router.navigate(['/home'])
+      });
+  }
+}
+
+
+//import { Component, OnInit, /*EventEmitter, Output,*/ Input } from '@angular/core';
+/*
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Router } from '@angular/router';
 //import ../Assignment.model.ts;
+import { eleves } from '../../shared/eleves';
+
+
+interface Eleve {
+  id: number;
+  nomComplet: string;
+}
+
+
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
@@ -17,6 +100,40 @@ export class AddAssignmentComponent implements OnInit {
   dateDeRendu: Date | undefined;
   isChecked: boolean = false;
   ajoutActive: boolean = false;
+  idMatiere: string | undefined;
+  nomEleve: string | undefined;
+  remarques: string | undefined;
+  note: number | undefined;
+
+  eleveData: Eleve[] = [];
+  matieres: any[] = [];
+  
+  selectedMatiere: any;
+  onMatiereChange(event: any) { // Remplacez 'any' par le type de l'événement
+    this.selectedMatiere = event.value;
+  }
+
+
+
+
+  getMatiere() {
+    this.assignmentService.getMatiere().subscribe((matieres) => {
+      this.matieres = matieres;
+      //this.selectedMatiere = matieres
+      if (this.assignment && this.matieres) {
+        this.selectedMatiere = this.matieres.find(matiere => matiere._id === this.assignment?.idMatiere);
+      }
+    });
+  }
+  getOneMatiere() {
+    const id = +this.route.snapshot.params['id'];
+    this.assignmentService.getOneMatiere(id).subscribe((matiere) => {
+      if (!matiere) return;
+      this.matieres = matiere;
+      this.selectedMatiere = matiere
+    });
+  }
+
 
   onSubmit($event: any) {
     $event.preventDefault();
@@ -26,6 +143,11 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.nom = this.nomDevoir;
     newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
+    newAssignment.idMatiere = this.selectedMatiere._id;
+    newAssignment.auteur = this.nomEleve;
+    newAssignment.remarques = this.remarques;
+    newAssignment.note = this.note;
+
     if (this.isChecked) {
       newAssignment.rendu = true;
     }
@@ -62,7 +184,10 @@ export class AddAssignmentComponent implements OnInit {
   constructor(
     private assignmentService: AssignmentsService,
     private router: Router
-  ) {}
+  ) {this.eleveData = eleves;}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getMatiere();
+  }
 }
+*/

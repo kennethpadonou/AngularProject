@@ -11,7 +11,10 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class AssignmentDetailComponent implements OnInit {
   //@Input() assignmentTransmis: Assignment | undefined | null;
+  assignment: Assignment | undefined;
   assignmentTransmis: Assignment | undefined | null;
+  selectedMatiere: any;
+  matieres: any[] = [];
   @Output() assignmentSupprime = new EventEmitter<Assignment>();
 
   /*supprimerAssignment(event: Assignment) {
@@ -27,17 +30,28 @@ export class AssignmentDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //on récupère l'id de l'assignment dans l'url
-    //attention l'url est composée de string on utilisera donc le + pour caster en number
     const id = +this.route.snapshot.params['id']; //Attention, le paramètre est de type string
-    //const id = +this.route.snapshot.params.id;
     this.assignmentService.getAssignment(id).subscribe((assignment) => {
       this.assignmentTransmis = assignment;
+      this.getMatiere();
+      /*if (this.assignment && this.matieres) {
+        this.selectedMatiere = this.matieres.find(matiere => matiere._id === this.assignment?.idMatiere);
+      }
+      */
     });
   }
 
+  getMatiere() {
+    this.assignmentService.getMatiere().subscribe((matieres) => {
+      this.matieres = matieres;
+      //this.selectedMatiere = matieres
+      if (this.assignmentTransmis && this.matieres) {
+        this.selectedMatiere = this.matieres.find(matiere => matiere._id === this.assignmentTransmis?.idMatiere);
+      }
+    });
+  }
   onAssignmentRendu() {
-    if (this.assignmentTransmis) {
+    if (this.assignmentTransmis && this.assignmentTransmis.note) {
       this.assignmentTransmis.rendu = true;
       this.assignmentService
         .updateAssignment(this.assignmentTransmis)

@@ -1,9 +1,4 @@
-.rendu {
-  color: green;
-}
-.nonRendu {
-  color: red;
-}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -24,27 +19,7 @@
   /* Ajustez la largeur maximale selon vos besoins */
 }
 
-/* .container {
-  display: flex;
-  flex-direction: column;
-} */
 
-/* .ajouterBtn {
-  align-self: flex-end;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.ajouterBtn {
-  margin-bottom: 20px;
-} */
 
 mat-list-item {
   margin-bottom: 10px;
@@ -131,3 +106,235 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+
+
+
+
+/***************** ***********/
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+
+/* Style pour le champ de formulaire */
+mat-form-field {
+  width: 85%; /*width: 100%;*/
+  margin-bottom: 20px;
+}
+
+/* Style pour le div avec la classe .mat-elevation-z8 */
+.mat-elevation-z8 {
+  width: 90%;
+  margin: auto; /* Centrer le div sur la page */
+}
+.mat-table-wrapper {
+  max-height: 400px; /* Ajustez cette valeur en fonction de vos besoins */
+  overflow: auto;
+}
+/* Style pour le tableau */
+table {
+  width: 100%;
+}
+
+/* Style pour les cellules d'en-tête du tableau */
+th.mat-header-cell {
+  background-color: #f5f5f5; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+}
+
+/* Style pour les cellules du tableau */
+td.mat-cell {
+  padding: 15px; /* Espacement intérieur */
+}
+
+/* Style pour le paginatueur */
+mat-paginator {
+  margin-top: 20px; /* Espacement au-dessus du paginatueur */
+}
+/*
+.rendu {
+  background-color: lightgreen;
+}
+
+.nonRendu {
+  background-color: lightcoral;
+}
+*/
+
+.sticky-header {
+  overflow-y: auto;
+  height: 300px; /* Ajustez cette valeur en fonction de vos besoins */
+}
+
+.sticky-header .mat-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: inherit;
+}
+
+
+
+
+
+/* Style général de la table */
+.mat-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Style des cellules de la table */
+.mat-cell, .mat-header-cell {
+  padding: 16px;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* Style des lignes de devoir rendu */
+.rendu {
+  color: green;
+  background-color: #e8f5e9; /* Une teinte plus claire de vert */
+}
+
+/* Style des lignes de devoir non rendu */
+.nonRendu {
+  color: red;
+  background-color: #ffebee; /* Une teinte plus claire de rouge */
+}
+
+/* Style de la pagination */
+.mat-paginator {
+  margin: 20px 0;
+}
+
+/* Style de la ligne lorsqu'il n'y a pas de données correspondantes */
+.mat-row.matNoDataRow {
+  color: #757575; /* Gris */
+}
+
+
+
+
+/* Style pour le div avec la classe .mat-elevation-z8 */
+.mat-elevation-z8 {
+  width: 90%;
+  margin: auto; /* Centrer le div sur la page */
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12); /* Ajouter une ombre pour un effet de profondeur */
+}
+
+.mat-table-wrapper {
+  max-height: 400px; /* Ajustez cette valeur en fonction de vos besoins */
+  overflow: auto;
+  border-radius: 5px; /* Ajouter des coins arrondis */
+}
+
+/* Style pour le tableau */
+table {
+  width: 100%;
+  border-collapse: separate; /* Pour permettre l'espacement entre les cellules */
+  border-spacing: 0 15px; /* Espacement entre les cellules */
+}
+
+/* Style pour les cellules d'en-tête du tableau */
+th.mat-header-cell {
+  background-color: #f5f5f5; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+  padding: 15px; /* Espacement intérieur */
+  text-transform: uppercase; /* Texte en majuscules */
+}
+
+/* Style pour les cellules du tableau */
+td.mat-cell {
+  padding: 15px; /* Espacement intérieur */
+  background-color: #fff; /* Couleur de fond */
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12); /* Ajouter une ombre pour un effet de profondeur */
+}
+
+/* Style pour les cellules du tableau indiquant le statut de rendu */
+td.mat-cell.rendu::before, td.mat-cell.nonRendu::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Pour rendre le cercle parfait */
+  margin-right: 10px; /* Pour ajouter un peu d'espace entre le cercle et le texte */
+}
+
+/* Style pour les cellules du tableau indiquant le devoir rendu */
+td.mat-cell.rendu::before {
+  background-color: green;
+}
+
+/* Style pour les cellules du tableau indiquant le devoir non rendu */
+td.mat-cell.nonRendu::before {
+  background-color: red;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.status-indicator.rendu {
+  background-color: green;
+}
+
+.status-indicator.nonRendu {
+  background-color: red;
+}
+
+::ng-deep tr.mat-row {
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep tr.mat-row:hover {
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+}
+
+
+
+
+
+
+
+::ng-deep .my-row-class {
+  background-color: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .my-row-class:hover {
+  background-color: #e0e0e0;
+}
+
+::ng-deep .my-row-class:nth-child(even) {
+  background-color: #ffffff;
+}
+
+::ng-deep .my-row-class:nth-child(even):hover {
+  background-color: #e0e0e0;
+}
+
+
+
+
+
+
+
+
