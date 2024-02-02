@@ -7,6 +7,11 @@ Ce dépôt contient le code source pour un projet Angular qui se compose d'un fr
 - Backend: [GitHub - Backend](https://github.com/kennethpadonou/AngularProject_Back)
 - Frontend: [GitHub - Frontend](https://github.com/kennethpadonou/AngularProject_Front)
 
+## Liens vers la vidéo youtube
+#### La liste des utilisateurs est défini par l'ajout d'une collection sur la base mongoDB.
+- vidéo: [vidéo - youtube](https://youtu.be/a292JoOFSQo)
+
+
 ## Exécution en local
 
 Si vous souhaitez exécuter ce projet localement sur votre machine, suivez les étapes ci-dessous :
